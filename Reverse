@@ -1,0 +1,18 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        '''
+        分成两种情况：
+        1.判断为<0，加绝对值后翻转，然后添负号
+        2.以上都不是直接翻转
+        如果不溢出输出
+        '''
+        if x < 0 :#将负数的转换成正数再进行翻转然后再转为负数
+            c = 0
+            c = c - x
+            a = int(str(c)[::-1])
+            a = -a
+        else:    #正数直接翻转
+            a = int(str(x)[::-1])
+        if a < -(2**31) or a > 2**31 :#大小溢出返回0
+            return 0
+        return a
