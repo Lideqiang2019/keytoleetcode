@@ -1,0 +1,13 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        '''
+        取出neddle中的第一个字符，和haystack对比，不等则取第二个，等了也取第二个，直至
+        整个needle取尽，如果相等的长度和neddle长度相等，则返回第一个相等值的位置，否则
+        返回-1
+        用index函数
+        Python index() 方法检测字符串中是否包含子字符串 str ，如果指定 beg（开始） 和 end（结束） 范围，则检查是否包含在指定范围内
+        '''
+      
+        if needle not in haystack:
+            return -1
+        else: 
