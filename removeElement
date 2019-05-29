@@ -1,0 +1,14 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        '''
+        关键操作在while循环里，只要对比整个数组里值与val，相等的删去，不等的保留即可
+        '''
+        l=len(nums)
+        i=0
+        while l>i:
+            if nums[i]==val:
+                del nums[i]
+                l=l-1
+            else:
+                i+=1
+        return l
