@@ -1,0 +1,12 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        '''
+        用条件假设，如果相邻的两个字符串能够组成有效的字符串则输出True 
+        否则输出False
+        '''
+        for i in range(len(s)-1):
+            if s[i]+s[i+1]=='()' or s[i]+s[i+1]=='[]' or s[i]+s[i+1]=='{}':
+                return True
+            else:
+                return False
+            i=i+2
