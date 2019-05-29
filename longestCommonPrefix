@@ -1,0 +1,13 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        '''
+        将数据集进行比较，最大最小的公共前缀即是整个数组的公共前缀
+        进一步将公共前缀取出来
+        '''
+        if not strs: return ""
+        s1 = min(strs)
+        s2 = max(strs)
+        for i,x in enumerate(s1):
+            if x != s2[i]:
+                return s2[:i]#比较对应位置上最小字符串与最大字符串的值，如果出现不等的值，则返回至该位置的s2
+        return s1
