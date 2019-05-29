@@ -1,0 +1,10 @@
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        '''
+        用一次循环的方法，如果nums[i]=target，就输出i
+        '''
+        nums.append(target)
+        nums.sort()
+        for i in range(len(nums)):
+            if nums[i] == target:
+                return i
