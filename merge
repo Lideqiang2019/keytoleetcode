@@ -1,0 +1,13 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        从后向前，假设m>n，如果nums1中的数比nums2中的数大，则将nums1较大的数放在最后，
+        并且将m-1，相当于把较大的数重新移进一个数组中
+        """
+        while n>0:
+            if m>0 and nums1[m-1]>nums2[n-1]:
+                nums1[m+n-1],m,n=nums1[m-1],m-1,n
+            else:
+                nums1[m+n-1],m,n=nums2[n-1],m,n-1
+      
