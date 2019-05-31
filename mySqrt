@@ -1,0 +1,6 @@
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        '''
+        投机取巧法
+        '''
+        return int(x**0.5)
