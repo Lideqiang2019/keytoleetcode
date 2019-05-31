@@ -1,0 +1,19 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        '''
+        先转成数字，加一后，再把数字变成str，然后用一个dict输出
+        '''
+        def digit(x,y):
+            return 10*x+y
+        
+        digits[-1]=digits[-1]+1
+        
+        if digits[-1] < 10:
+            return digits
+        # 对于9 + 1 = 10 => [1, 0] 直接利用先求和后拆分
+        else:
+            tmp=reduce(digit,digits)
+            res = []
+            for i in range(len(str(tmp))):
+                res.append(int(str(tmp)[i]))
+            return res  
