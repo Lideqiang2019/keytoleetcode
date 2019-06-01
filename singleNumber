@@ -1,0 +1,9 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        '''
+        异或，不同为1，相同为0，是二进制的异或，有点像数电中的异或，0^x=x
+        '''
+        a=0
+        for num in nums:
+            a=a^num
+        return a
