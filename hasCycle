@@ -1,0 +1,24 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    def hasCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        '''
+        用快慢指针法，快指针是慢指针速度的两倍,慢指针走一遍，快指针走了两遍
+        如果存在环，一定能识别出来
+        
+        '''
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+            if slow == fast:
+                return True
+        return False
