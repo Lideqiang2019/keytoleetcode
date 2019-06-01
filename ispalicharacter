@@ -1,0 +1,4 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = ''.join(list(filter(str.isalnum,s))).lower()#取出字母，并小写，中间用空字符连接
+        return s==s[::-1]#翻转后判断
