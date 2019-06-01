@@ -1,0 +1,23 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def minDepth(self, root: TreeNode) -> int:
+        '''
+        与最大深度求法类似,但是会出现只有左半边，或者右半边的情况
+        如果用最小路径的方法，会得到1的错误结果
+        解决办法是分类
+        '''
+        if root is None:
+            return 0
+        # 如果当前非空节点的左子树为None，而右子树不为None，说明得在右子树中找叶子结点
+        if root.left is None and root.right is not None:
+            return self.minDepth(root.right)+1
+        # 如果当前非空节点的左子树不为None，而右子树为None，说明得在左子树中找叶子结点
+        elif root.right is None and root.left is not None:
+            return self.minDepth(root.left)+1
+        return min(map(self.minDepth,(root.left,root.right)))+1
