@@ -1,0 +1,11 @@
+class Solution(object):
+    def generate(self, numRows):
+        """
+        :type numRows: int
+        :rtype: List[List[int]]
+        """
+        L=[1]
+        while numRows>=len(L):
+            yield L
+            L=[1]+[num+L[i+1] for i,num in enumerate(L[:-1])]+[1]
+       
