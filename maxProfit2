@@ -1,0 +1,10 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        '''
+        zip()函数，只要有利可图即卖出
+        '''
+        return sum(b - a for a, b in zip(prices, prices[1:]) if b > a)
