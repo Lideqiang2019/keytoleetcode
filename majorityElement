@@ -1,0 +1,7 @@
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        '''
+        排序后，根据中数定义
+        '''
+        nums.sort()
+        return nums[len(nums)//2]
