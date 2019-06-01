@@ -1,0 +1,15 @@
+class Solution(object):
+    def trailingZeroes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        '''
+        10一定是2*5的组合，而2和5的组合中，5的个数少一些
+        查5的个数即可得到0的个数
+        '''
+        res=0
+        while n>=5:
+            res+=n/5
+            n//=5
+        return res
