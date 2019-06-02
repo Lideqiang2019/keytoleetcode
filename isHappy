@@ -1,0 +1,10 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        '''
+        用循环的方法，如果平方和加在一起，在seen中的话，会跳出循环，返回TRUE
+        '''
+        seen = {1}
+        while n not in seen:
+            seen.add(n)
+            n = sum(int(i) ** 2 for i in str(n))
+        return n == 1
