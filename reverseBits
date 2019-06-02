@@ -1,0 +1,9 @@
+class Solution:
+    # @param n, an integer
+    # @return an integer
+    def reverseBits(self, n):
+        '''
+        右对齐前补零，翻转，舍去前两位，并将二进制转为十进制
+        '''
+        return int(bin(n)[2:].zfill(32)[::-1],2)
+        
