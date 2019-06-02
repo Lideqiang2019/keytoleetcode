@@ -1,0 +1,15 @@
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        '''
+        转化成str，如果是1，则加1，最终计算出所有1的个数
+        '''
+        res=0
+        k=str(bin(n)[2:])
+        for i in range(len(k)):
+            if k[i]=='1':
+                res+=1
+        return res
