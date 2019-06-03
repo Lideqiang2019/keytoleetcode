@@ -1,0 +1,10 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        '''
+        set(0)重复的会被删除
+        '''
+        tmp=set(nums)
+        if len(tmp)==len(nums):
+            return False
+        else:
+            return True
