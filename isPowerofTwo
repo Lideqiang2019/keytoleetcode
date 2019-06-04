@@ -1,0 +1,17 @@
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        '''
+       法一： 一直除以2，直到余数小于1 
+        t=0
+        while t<=1:
+            n/=2
+            t=n%2
+        if t==0:
+            return True
+        else:
+            return False
+           超时
+         法二：
+         2的次幂的最高位一定是1
+        '''
+        return n>0 and n&n-1==0
