@@ -1,0 +1,8 @@
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        '''
+            求出0-n的和，然后求出数组所有数的和，两个和相减，得到结果。
+        '''
+        s=sum(nums)
+        l=int(len(nums)*(len(nums)+1)/2)
+        return l-s
