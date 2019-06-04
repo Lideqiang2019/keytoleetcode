@@ -1,0 +1,13 @@
+class Solution(object):
+    def isAnagram(self, s, t):
+        """
+        :type s: str
+        :type t: str
+        :rtype: bool
+        """
+        '''
+        长度要一样，然后从s中取字符，如果都在t中，则返回true
+        '''
+        if(sorted(t)==sorted(s)):
+            return True
+        return False
