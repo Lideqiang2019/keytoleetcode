@@ -1,0 +1,6 @@
+class Solution:
+    def canWinNim(self, n: int) -> bool:
+        '''
+        如果不被4整除，总可以赢
+        '''
+        return n%4!=0
