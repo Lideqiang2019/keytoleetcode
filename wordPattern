@@ -1,0 +1,20 @@
+class Solution:
+    def wordPattern(self, pattern: str, str: str) -> bool:
+        '''
+        首先排除str和pattern长度不同和去重后str和pattern长度不同的情况；
+        然后把pattern的每一位作为键key，str对应的一位作为值value，添加到字典res中；
+        判断，每当遇到字典中已经有的键时(字典的键不能重复)再进一步判断对应的值value是否相等：
+        相等则跳过判断下一对，不相等则str和pattern不匹配返回False
+        '''
+        str = str.split(' ')
+        if not pattern or not str or len(set(str)) != len(set(pattern)) or len(str) != len(pattern):
+        	return False
+        res = {}
+        for i in range(len(str)):
+        	if pattern[i] in res:
+        		if res[pattern[i]] == str[i]:
+        			continue
+        		else:
+        			return False
+        	res[pattern[i]] = str[i]
+        return True
