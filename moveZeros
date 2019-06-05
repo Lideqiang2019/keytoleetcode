@@ -1,0 +1,17 @@
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        '''
+        取下为零的数放在最后面，但要注意：减少这种移动的次数，总共的长度减去0的长度就是要
+        移动的此数
+        '''
+        i,k=0,0
+        while i<len(nums)-k:
+            if nums[i]==0:
+                nums.pop(i)
+                nums.append(0)
+                k+=1
+            else:
+                i+=1
