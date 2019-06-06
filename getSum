@@ -1,0 +1,6 @@
+class Solution:
+    def getSum(self, a: int, b: int) -> int:
+        '''
+        用位算符代替
+        '''  
+        return sum([a,b])
