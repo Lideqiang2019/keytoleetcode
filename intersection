@@ -1,0 +1,12 @@
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        '''
+        如果两数相同，则放入新的list中，最后把list中重复的元素删除list（set(s)）
+        '''
+        s=[]
+        for i in nums1:
+            for j in nums2:
+                if i==j:
+                    s.append(i)
+        s1=list(set(s))
+        return s1
