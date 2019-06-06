@@ -1,0 +1,9 @@
+class Solution:
+    def isPerfectSquare(self, num: int) -> bool:
+        '''
+        如果是平方数则开平方后是一个整数，对开方后的数取整，然后平方如果二者相等
+        True
+        '''
+        if int(num**0.5)**2==num:
+            return True
+        return False
