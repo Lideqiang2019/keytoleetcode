@@ -1,0 +1,18 @@
+class Solution(object):
+    def canConstruct(self, ransomNote, magazine):
+        """
+        :type ransomNote: str
+        :type magazine: str
+        :rtype: bool
+        """
+        '''
+        要求ransom的每个字母都在magzines里，有重复的要数量一样
+        '''
+        l1=len(ransomNote)
+        l2=len(magazine)
+        if l1>l2:
+            return False
+        for i in set(ransomNote):
+            if not i in magazine or ransomNote.count(i)>magazine.count(i):
+                return False
+        return True
