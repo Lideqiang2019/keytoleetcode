@@ -1,0 +1,22 @@
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        '''
+        首先要满足两个条件，
+        第一，有重复的数字,用coount
+        第二，第一个重复的位子
+        ''' 
+        res = set()
+        s_inv = s[::-1]
+        n = len(s)
+        for i,num in enumerate(s):
+            if num in res:
+                continue
+            res.add(num)
+            if s_inv.index(num) == n-1-i:
+                return i
+        return -1
+            
