@@ -1,5 +1,6 @@
 class Solution:
     def readBinaryWatch(self, num: int) -> List[str]:
+        '''首部最为关键，创建一个能统计有用的1的个数的list'''
         bins = [str(bin(i))[2:].count('1') for i in range(60)]
         results = []
         for hour in range(12):
