@@ -1,0 +1,31 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        '''
+        如果是奇数，则字符长度-1的一半是成对的
+        如果是偶数，则字符长度一半是成对的
+        
+        排序+滑动窗口
+        如果是单1个则赋值falg为1
+        '''
+        s=sorted(s)
+        
+        ans=0
+        flag=0
+        
+        i=0
+        
+        while i<len(s)-1:
+            if s[i]!=s[i+1]:
+                flag=1
+                i+=1
+            else:
+                ans+=2
+                i+=2
+        if i==len(s)-1:
+            flag=1
+        return ans+flag
+        
