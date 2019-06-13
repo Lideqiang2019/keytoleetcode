@@ -1,0 +1,22 @@
+class Solution(object):
+    def addStrings(self, num1, num2):
+        """
+        :type num1: str
+        :type num2: str
+        :rtype: str
+        """
+        '''
+        调用一个函数
+        '''
+        short, long = sorted([num1, num2], key=len)
+        short = '0'*(len(long)-len(short)) + short
+        
+        carry = 0
+        sm = ''
+        
+        for i in range(1, len(short)+1):
+            temp_carry, temp = divmod((int(short[-i]) + int(long[-i]) + carry), 10)
+            sm += str(temp)
+            carry = temp_carry
+        res = sm + str(carry) if carry else sm
+        return res[::-1]
