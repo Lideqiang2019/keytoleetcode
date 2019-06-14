@@ -1,0 +1,11 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        num=[]
+        # if len(nums1)>=len(nums2):
+        #     return 
+        for i in range(len(nums1)):
+            if nums2[i+1]>nums1[i]:
+                num.append(nums2[i+1]-nums1[i])
+            else:
+                num.append(-1)
+        return num
