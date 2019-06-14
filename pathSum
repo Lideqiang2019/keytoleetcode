@@ -1,0 +1,32 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def pathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: int
+        """
+        '''
+        用两次递归实现
+        第一次遍历每个节点
+        第二次每个节点的值相加与sum比较
+        '''
+        if not root:
+            return 0
+        def f(root,sum):
+            count=0#记录路径个数
+            if not root:
+                return 0
+            if root.val==sum:
+                count+=1
+            count+=f(root.left,sum-root.val)#没有直接相等的，再加上左叶子节点试试
+            count+=f(root.right,sum-root.val)#没有直接相等的，再加上右叶子节点试试
+            return count
+        return f(root,sum)+self.pathSum(root.left,sum)+self.pathSum(root.right,sum)
+            
