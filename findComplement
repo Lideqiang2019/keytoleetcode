@@ -1,0 +1,4 @@
+class Solution:
+    def findComplement(self, num: int) -> int:
+        return int(bin(num)[2:].replace('0','2').replace('1','0').replace('2','1'),2)
+    #先把0换成2，而后用1替换0，再把原先0的位子换成1，如果直接0,1换，只能把0换成全1，或者把1换成全0
