@@ -14,6 +14,6 @@ class Solution:
             A[ord(s[i])-ord('a')]+=1
             A[ord(s[i-n])-ord('a')]-=1
             if A==[0]*26:
-                num.append(i-n+1)#s长时，
+                num.append(i-n+1)#s长时，如果能把p造成的缺失补回来，则相等
                 
         return num
