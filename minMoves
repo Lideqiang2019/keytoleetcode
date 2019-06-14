@@ -1,0 +1,9 @@
+class Solution:
+    def minMoves(self, nums: List[int]) -> int:
+        '''n-1个数同时加一，就好比每次有一个数自身减一
+        '''
+        sum=0
+        minmum=min(nums)
+        for i in nums:
+            sum+=i-minum
+        return sum
