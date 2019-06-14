@@ -1,0 +1,21 @@
+class Solution:
+    def arrangeCoins(self, n: int) -> int:
+        '''
+        i行应有i个
+        若恰好第j行有j个
+        则返回j
+        否则返回j-1
+        此题或可用递归
+        
+        '''
+        if n==0:
+            return 0
+        i=1
+        
+        while n>0:
+            n-=i
+            i+=1
+        if n==0:
+            return i-1
+        else:
+            return i-2
