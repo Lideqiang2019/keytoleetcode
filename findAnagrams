@@ -1,0 +1,19 @@
+class Solution:
+    def findAnagrams(self, s: str, p: str) -> List[int]:
+        if len(p)>len(s):
+            return []#如果是p字长大，则输出空
+        num=[]
+        n=len(p)
+        A=[0]*26#定义26的0，方便下面的变换
+        for i in range(n):
+            A[ord(s[i])-ord('a')]+=1
+            A[ord(p[i])-ord('a')]-=1
+        if A==[0]*26:
+            num.append(0)#等长时，如果变换后的为全0，p与s同，返回0位置
+        for i in range(n,len(s)):
+            A[ord(s[i])-ord('a')]+=1
+            A[ord(s[i-n])-ord('a')]-=1
+            if A==[0]*26:
+                num.append(i-n+1)#s长时，
+                
+        return num
