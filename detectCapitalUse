@@ -1,0 +1,10 @@
+class Solution:
+    def detectCapitalUse(self, word: str) -> bool:
+        '''
+        三种情况
+        首字母大写,其余全部要小写，或者全部大写
+        全小写
+        返回TRUE，其余false
+        '''
+        return word.upper()==word or word.lower()==word or word.title()==word
+            
