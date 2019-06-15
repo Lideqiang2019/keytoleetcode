@@ -1,0 +1,25 @@
+class Solution:
+    def findWords(self, words: List[str]) -> List[str]:
+        '''
+        分三行的列表
+        '''
+        s1='QWERTYUIOP'
+        s2='ASDFGHJKL'
+        s3='ZXCVBNM'
+        
+        s=[]
+        l=[]
+        count=1
+        
+        for t in words:
+            for i in t:
+                if i.upper() in s1:
+                    s.append(1)
+                elif i.upper() in s2:
+                    s.append(2)
+                else:
+                    s.append(3)
+            if max(s)==min(s):#如果在同一行则把此单词加入，否则归零
+                l.append(t)
+            s=[]
+        return l
