@@ -17,6 +17,6 @@ class Solution:
         else:
             l.append(S[:head])
             for n in range((length-head)//K):
-                l.append(S[n*k:(n+1)*K])
+                l.append(S[head+n*K:head+(n+1)*K])
             return '-'.join(l)
         return l
