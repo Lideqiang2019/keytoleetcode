@@ -1,0 +1,12 @@
+class Solution:
+    def arrayPairSum(self, nums: List[int]) -> int:
+        '''
+        排序，隔一个取一个
+        '''
+        num=sorted(nums)
+        l=0
+        for n in range(len(num)):
+            if n%2==0:
+                l+=num[n]
+        return l
+        
