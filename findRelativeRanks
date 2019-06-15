@@ -1,0 +1,7 @@
+class Solution:
+    def findRelativeRanks(self, nums: List[int]) -> List[str]:
+        num=sorted(nums)
+        l=["Gold Medal", "Silver Medal", "Bronze Medal"]
+        for i in range(3,len(nums)):
+            l.append(str(num[i]))
+        return l
