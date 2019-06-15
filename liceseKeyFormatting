@@ -1,0 +1,22 @@
+class Solution:
+    def licenseKeyFormatting(self, S: str, K: int) -> str:
+        '''
+        先去了‘—’
+        确定开头
+        k分组后加‘—’
+        '''
+        S=S.replace('-','').upper()
+        length=len(S)
+        head=length%K
+        l=[]
+        
+        if head==0:
+            for n in range(length//K):
+                l.append(S[n*K:(n+1)*K])
+            return '-'.join(l)
+        else:
+            l.append(S[:head])
+            for n in range((length-head)//K):
+                l.append(S[n*k:(n+1)*K])
+            return '-'.join(l)
+        return l
