@@ -1,0 +1,12 @@
+class Solution:
+    def constructRectangle(self, area: int) -> List[int]:
+        '''
+        求出长宽
+        筛选出L>=W
+        进一步求出max（L-W）
+        '''
+        l=int(area**0.5)
+        
+        while area%l!=0 or l*l<area:
+            l+=1
+        return [l,area//l]
