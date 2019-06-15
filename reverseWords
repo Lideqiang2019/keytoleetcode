@@ -1,0 +1,10 @@
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        '''
+        用split方法，将每个单词分割，然后翻转
+        '''
+        return ' '.join(i[::-1] for i in s.split())
