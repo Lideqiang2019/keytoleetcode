@@ -1,0 +1,15 @@
+class Solution:
+    def repeatedStringMatch(self, A: str, B: str) -> int:
+        '''
+        于2*A+B终止
+        '''
+        i=1
+        x=A
+        
+        while len(x)<=2*len(A)+len(B):
+            if B in x:
+                return i
+            i+=1
+            x+=A
+        
+        return -1
