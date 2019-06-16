@@ -1,0 +1,12 @@
+class Solution:
+    def imageSmoother(self, M: List[List[int]]) -> List[List[int]]:
+        rs,cs = len(M),len(M[0])          
+        res = [[None for _ in range(cs)] for _ in range(rs)] #先把result结构创建好，后面依次赋值
+        
+        for r in range(rs):
+            for c in range(cs):
+                #temp存放计算某个位置时候需要用到的所有数据：前后三行前后三列的元素，如果前一行（或前一列）是负数，置0就行了。
+                temp = [i for j in M[0 if r==0 else r-1:r+2] for i in j[0 if c==0 else c-1:c+2]]
+                #求算数平均
+                res[r][c] = sum(temp)//len(temp)
+        return res;
