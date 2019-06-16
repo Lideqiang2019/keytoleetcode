@@ -1,0 +1,23 @@
+class Solution:
+    def calPoints(self, ops: List[str]) -> int:
+        '''
+        分类的思想
+        C比较特殊，会将该数给删除，先遍历找到C，把数给安排一边
+        然后再考虑其他情况
+        '''
+        j=0
+        while j<len(ops)-1:
+            if ops[j]=='C':
+                ops.pop(j)
+                ops.pop(j-1)
+                j-=2
+            j+=1
+        s=[0 for i in ops]
+        for i in range(len(ops)):
+            if ops[i]=='D':
+                s[i]=int(s[i-1])*2
+            elif ops[i]=='+':
+                s[i]=int(s[i-1])+int(s[i-2])
+            else:
+                s[i]=int(ops[i])
+        return sum(s)
