@@ -1,0 +1,12 @@
+class Solution(object):
+    def maximumProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        '''
+        排序后，从后向前输出三个最大的数相乘即可
+        '''
+        num=sorted(nums)
+        
+        return max(num[-1]*num[-2]*num[-3],num[0]*num[1]*num[-1])
