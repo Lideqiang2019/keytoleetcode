@@ -1,0 +1,6 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        s=sum(set(nums))
+        num=sum(nums)-s#重复的
+        lose=sum(range(1,len(nums)+1))-s#缺失的
+        return [num,lose]
