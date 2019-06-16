@@ -1,0 +1,20 @@
+class Solution:
+    def countBinarySubstrings(self, s: str) -> int:
+        '''
+        记录其中连续且相同的子串的长度，记录在一个列表中。再遍历列表，相邻的两个数较小的数加到结果中即可。
+        '''
+        countl=[]
+        num=s[0]
+        count=0
+        for i in s:
+            if i==num:
+                count+=1
+            else:
+                countl.append(count)
+                num=i
+                count=1
+        countl.append(count)
+        res=0
+        for i in range(len(countl)-1):
+            res+=min(countl[i],countl[i+1])
+        return res
