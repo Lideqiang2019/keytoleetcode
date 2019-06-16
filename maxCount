@@ -1,0 +1,10 @@
+class Solution:
+    def maxCount(self, m: int, n: int, ops: List[List[int]]) -> int:
+        '''
+        每次操作都是从左上角开始，重叠次数最大的部分的个数即为所求,边沿处最小
+        如果不操作，那么最终是m*n
+        
+        '''
+        if not ops:
+            return m*n
+        return min(ops[i][0] for i in range(len(ops)))*min(ops[i][1] for i in range(len(ops)))
