@@ -1,0 +1,17 @@
+class Solution(object):
+    def judgeSquareSum(self, c):
+        """
+        :type c: int
+        :rtype: bool
+        """
+        l=int(c**0.5)
+        f=0
+        
+        while f<=l:
+            if f**2+l**2==c:#直接相等
+                return True
+            elif f**2+l**2>c:#右侧大了，向里面缩缩
+                l-=1
+            else:#左侧小了，向里面缩缩
+                f+=1
+        return False
