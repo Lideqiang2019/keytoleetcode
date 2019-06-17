@@ -1,0 +1,18 @@
+class Solution(object):
+    def pivotIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        '''
+        左边之和 - 右边之和 
+        如果等于0 则返回下标
+        '''
+        l,r,diff=0,0,[0]*len(nums)
+        
+        for i,j in zip(range(0,len(nums)),range(len(nums)-1,-1,-1)):
+            diff[i]+=l
+            l+=nums[i]
+            diff[j]-=r
+            r+=nums[j]
+        return diff.index(0) if 0 in diff else -1  
