@@ -1,0 +1,8 @@
+class Solution:
+    def shortestToChar(self, S: str, C: str) -> List[int]:
+        '''
+        首先统计目标字符在字符串中所有出现的位置组成位置列表，
+        然后对字符串中每个位置计算当前位置与位置列表中所有位置的距离的最小值。
+        '''
+        ids=[i for i,j in enumerate(S) if j==C]
+        return [min([abs(i-j) for j in ids]) for i in range(len(S))]
