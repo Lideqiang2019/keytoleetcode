@@ -1,0 +1,19 @@
+class Solution(object):
+    def dominantIndex(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        '''
+        先找最大数
+        去除最大数
+        一次遍历，如果最大数大于两倍的次大数即返回最大数的索引
+        '''
+        num=sorted(nums)
+        if len(nums)==1:
+            return 0
+        
+        if num[-1]>=2*num[-2]:
+            return nums.index(num[-1])
+        else:
+            return -1
