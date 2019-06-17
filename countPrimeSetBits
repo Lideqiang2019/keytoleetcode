@@ -1,0 +1,17 @@
+class Solution(object):
+    def countPrimeSetBits(self, L, R):
+        """
+        :type L: int
+        :type R: int
+        :rtype: int
+        """
+        '''
+        统计数字中1 的个数，如果是质数个则加1
+        返回总的质数个数
+        '''
+        prime=set([2,3,5,7,11,13,17,19])
+        count=0
+        for n in range(L,R+1):
+            if bin(n).count('1') in prime:
+                count+=1
+        return count
