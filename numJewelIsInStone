@@ -1,0 +1,15 @@
+class Solution(object):
+    def numJewelsInStones(self, J, S):
+        """
+        :type J: str
+        :type S: str
+        :rtype: int
+        """
+        '''
+        从S中取出字符，如果在J中则加一
+        '''
+        count=0
+        for n in S:
+            if n in J:
+                count+=1
+        return count
