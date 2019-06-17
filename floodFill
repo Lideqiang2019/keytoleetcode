@@ -1,0 +1,15 @@
+class Solution(object):
+    def floodFill(self, image, sr, sc, newColor):
+        """
+        :type image: List[List[int]]
+        :type sr: int
+        :type sc: int
+        :type newColor: int
+        :rtype: List[List[int]]
+        """
+        if image[sr][sc]!=newColor:
+            old,image[sr][sc],m,n=image[sr][sc],newColor,len(image),len(image[0])#如果不符合题意，要渲染
+            for i,j in zip((sr,sr+1,sr,sr-1),(sc+1,sc,sc-1,sc)):#取周边
+                if 0<=i<m and 0<=j<n and image[i][j]==old:#对周边的每一个值进行递归，即重复和中心一样的操作
+                    self.floodFill(image,i,j,newColor)
+        return image
