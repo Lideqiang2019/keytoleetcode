@@ -1,0 +1,18 @@
+class Solution(object):
+    def selfDividingNumbers(self, left, right):
+        """
+        :type left: int
+        :type right: int
+        :rtype: List[int]
+        """
+        res=[]
+        for i in range(left,right+1):
+            if '0' in str(i):#0除不尽
+                continue
+            for num in str(i):#取每个数字中的字符
+                if i % int(num)!=0:
+                    break#如果不满足则换下一个数
+            else:
+                res.append(i)#添加进str
+        return res
+            
