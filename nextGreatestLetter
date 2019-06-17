@@ -1,0 +1,19 @@
+class Solution(object):
+    def nextGreatestLetter(self, letters, target):
+        """
+        :type letters: List[str]
+        :type target: str
+        :rtype: str
+        """
+        
+        '''
+        找比target大的数，组成一个数组，挑选数组中的较小的
+        '''
+        res=[]
+        for i in range(len(letters)):
+            if letters[i]>target:
+                res.append(letters[i]) 
+        if res:
+            return min(res)
+        else:
+            return letters[0]
