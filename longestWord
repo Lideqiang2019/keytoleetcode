@@ -1,0 +1,21 @@
+class Solution(object):
+    def longestWord(self, words):
+        """
+        :type words: List[str]
+        :rtype: str
+        """
+        '''
+        先对words进行排序，然后用set存储满足（由words词典中其他单词逐步添加一个字母组成）条件的单词，用res存储要输出的结         果（set中最长的一个单词）。
+        注意单词为单个字母时一定是满足条件的，所以要加进去。后面遍历的时候发现word[:-1]在set里面则将word加到set里去。当         word长度大于res长度时用word替换res。
+        '''
+        words.sort()
+        save=set()
+        
+        res=''
+        for word in words:
+            if word[:-1] in save or word[:-1]=='':
+                if len(word)>len(res):
+                    res=word
+                save.add(word)
+        return res
+        
