@@ -1,0 +1,15 @@
+class Solution(object):
+    def isOneBitCharacter(self, bits):
+        """
+        :type bits: List[int]
+        :rtype: bool
+        """
+        n = len(bits)
+        p = 0
+        while p < n - 2:  #一旦指针跳到最后两个元素上，则退出循环
+            if bits[p] == 0:
+                p+=1 #遇到0进1个位置
+            else:
+                p+=2  #遇到1进2个位置
+                
+        return bits[p] == 0
