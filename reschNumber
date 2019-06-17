@@ -1,0 +1,15 @@
+class Solution(object):
+    def reachNumber(self, target):
+        """
+        :type target: int
+        :rtype: int
+        """
+        '''
+        当前面n个数总和≥target且两者之差首次为偶数时，这时就得到了最小的步数。因为只要两者之差为偶数，总可以通过将前n个数         中的若干个数字改变符号来使得最终加和为target。
+        '''
+        point,step=0,0
+        target=abs(target)
+        while target>point or (point>=target and(point-target)%2!=0):
+            step+=1
+            point+=step
+        return step
