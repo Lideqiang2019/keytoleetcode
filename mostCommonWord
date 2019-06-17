@@ -1,0 +1,11 @@
+import re
+from collections import Counter
+class Solution:
+    def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
+        p=re.split(r"""[!?',;. ]""",paragraph.lower())#分开每个单词
+        d=Counter(p)#对单词计数
+        del d['']
+        for i in banned:#删除在禁止中的单词
+            del d[i]
+        return max(d,key=lambda x:d[x])#找最大的
+        
