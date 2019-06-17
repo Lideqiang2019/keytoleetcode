@@ -1,0 +1,19 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution(object):
+    def minDiffInBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        '''
+        中序遍历？
+        '''
+        in_order=lambda r:in_order(r.left)+[r.val]+in_order(r.right) if r else []
+        vals=in_order(root)
+        return min(vals[i+1]-vals[i] for i in range(len(vals)-1))
