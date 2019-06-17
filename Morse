@@ -1,0 +1,16 @@
+class Solution(object):
+    def uniqueMorseRepresentations(self, words):
+        """
+        :type words: List[str]
+        :rtype: int
+        """
+        mos=[".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        alpha="abcdefghijklmnopqrstuvwxyz"
+        alph_mos=dict(zip(alpha,mos))
+        res=set()
+        for word in words:
+            s=""
+            for i in word:
+                s=s+alph_mos[i]
+            res.add(s)
+        return len(res)
