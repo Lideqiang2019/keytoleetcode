@@ -1,0 +1,16 @@
+class Solution:
+    def buddyStrings(self, A: str, B: str) -> bool:
+        '''
+        
+        首先，长度要相等
+        相同位置上一样的略去，找到两个不同的，交换位置看看是否相同
+
+        '''
+        if len(A)!=len(B):
+            return False
+         # 由于必须交换一次，在相同的情况下，交换相同的字符
+        if A==B and len(set(A))<len(A):return True
+         # 使用 zip 进行匹配对比，挑出不同的字符对 
+        dif=[(a,b) for a,b in zip(A,B) if a!=b]
+         # 对数只能为2，并且对称，如 (a,b)与(b,a)
+        return len(dif)==2 and dif[0]==dif[1][::-1]
