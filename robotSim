@@ -1,0 +1,36 @@
+class Solution:
+    def robotSim(self, commands: List[int], obstacles: List[List[int]]) -> int:
+        org = [0, 0]
+        directions = ['n', 'e', 's', 'w']
+        d_index = 0
+        max_dis = 0
+        obstacles = set(map(tuple, obstacles))
+        
+        for cmd in commands:
+            if cmd == -1:  # 转向
+                d_index = (d_index + 1) % 4
+            elif cmd == -2:  # 转向
+                d_index = (d_index - 1) % 4
+            else:  # 移动
+                dc = directions[d_index]
+                res = self.move(org, cmd, dc, obstacles)
+                org = res
+                max_dis = max(max_dis, sum(map(lambda x:x**2, res)))  # 保存结果
+        return max_dis
+                
+    def move(self, org, dis, direction, blocks):  # 处理移动和障碍判断，一步一步移动、判断
+        cur = org
+        for i in range(dis):
+            if direction == 'n':
+                next = (cur[0], cur[1]+1)
+            elif direction == 's':
+                next = (cur[0], cur[1]-1)
+            elif direction == 'e':
+                next = (cur[0]+1, cur[1])
+            else:
+                next = (cur[0]-1, cur[1])
+                
+            if next in blocks:
+                return cur
+            cur = next
+        return cur
