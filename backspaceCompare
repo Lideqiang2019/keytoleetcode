@@ -1,0 +1,21 @@
+class Solution:
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        '''
+        按照有无#的情况
+        将数组添加到新的数组上
+        比较两新的数组
+        '''
+        a=[]
+        b=[]
+        for i in range(len(S)):
+            if S[i]!='#':
+                a.append(S[i])
+            elif S[i]=='#' and a!=[]:#如果a中有数，出现#则删去前一个数
+                a.pop()
+        for i in range(len(T)):
+            if T[i]!='#':
+                b.append(T[i])
+            elif T[i]=='#' and b!=[]:
+                b.pop()
+                
+        return a==b
