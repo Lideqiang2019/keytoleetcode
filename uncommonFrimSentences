@@ -1,0 +1,7 @@
+from collections import Counter
+class Solution:
+    def uncommonFromSentences(self, A: str, B: str) -> List[str]:
+        
+        A=A.split()
+        B=B.split()
+        return [word for word,c in Counter(A+B).items() if c==1]#只出现一次的即可
