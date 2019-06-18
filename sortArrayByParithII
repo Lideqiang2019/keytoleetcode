@@ -1,0 +1,12 @@
+class Solution(object):
+    def sortArrayByParityII(self, A):
+        """
+        :type A: List[int]
+        :rtype: List[int]
+        """
+        '''
+        来一个偶数，来一个奇数
+        '''
+        even=[i for i in A if i%2==0]
+        odd=[j for j in A if j%2==1]
+        return [i for n in zip(even,odd) for i in n]
