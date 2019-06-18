@@ -1,0 +1,17 @@
+class Solution:
+    def fairCandySwap(self, A: List[int], B: List[int]) -> List[int]:
+        '''
+        计算两个原始的数组和之差X，交换的两个数的差需要是X/2即可满足条件
+         
+        '''
+        sa, sb = sum(A), sum(B)
+        diff = (sa - sb) / 2
+        A.sort()
+        B.sort()
+        i, j = 0, 0
+        while A[i] - B[j] != diff:
+            if A[i] - B[j] > diff:
+                j += 1
+            else:
+                i += 1
+        return [A[i], B[j]]
