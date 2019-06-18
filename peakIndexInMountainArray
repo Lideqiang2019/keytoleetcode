@@ -1,0 +1,12 @@
+class Solution:
+    def peakIndexInMountainArray(self, A: List[int]) -> int:
+        '''
+        最大值不在两端，返回最大值的索引
+        左边升序，右边降序
+        '''
+        # a=max(A)
+        # i=A.index(a)
+        
+        for i in range(len(A)-1):
+            if A[i]>A[i+1]:
+                return i
