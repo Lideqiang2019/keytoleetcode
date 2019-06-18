@@ -1,0 +1,12 @@
+class Solution:
+    def maxDistToClosest(self, seats: List[int]) -> int:
+        '''
+        找相邻两个1之间最大距离/2即可
+        左边全都可以坐，例如:[0,0,0,0,0,0,0,1]那就坐最左边的位置；
+
+        右边全都可以坐，例如[1,0,0,0,0,0,0,0]，那就坐最右边的位置；
+
+        左右两边都有人，那就看哪一段空的座位最多，例如[1,0,0,0,0,0,1,0,1]，有两段，坐第一段最中间。
+        '''
+        persons = [p for p, seat in enumerate(seats) if seat == 1]
+        return max(persons[0], len(seats) - 1 - persons[-1], max([(persons[r] - persons[r - 1]) // 2 for r in range(1, len(persons))]+[0]))
