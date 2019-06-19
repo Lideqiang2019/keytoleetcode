@@ -1,21 +1,11 @@
 class RecentCounter(object):
-
     def __init__(self):
-        self.latest=[] 
-
-    def ping(self, t):
-        """
-        :type t: int
-        :rtype: int
-        """
-        def __init__(self):
-            self.latest = []            # 记录三秒之内的ping时刻
-        def ping(self, t: int) -> int:
-            self.latest.append(t)       # 添加记录
+        self.latest = []            # 记录三秒之内的ping时刻
+    def ping(self, t: int) -> int:
+        self.latest.append(t)       # 添加记录
         while self.latest and t - self.latest[0] > 3000:
             self.latest.pop(0)      # 移除3秒之前的数据
         return len(self.latest) 
-
 # Your RecentCounter object will be instantiated and called as such:
 # obj = RecentCounter()
 # param_1 = obj.ping(t)
