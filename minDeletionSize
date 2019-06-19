@@ -1,0 +1,11 @@
+class Solution(object):
+    def minDeletionSize(self, A):
+        """
+        :type A: List[str]
+        :rtype: int
+        """
+        res = 0
+        for i in zip(*A):
+            if list(i) != sorted(i):
+                res += 1
+        return res
