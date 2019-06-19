@@ -1,0 +1,19 @@
+class Solution(object):
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        '''
+        先将点给去掉replace（‘。’，‘ ’）
+        用一个s记录+以前的内容，s+='.'(@及以后内容)
+        统计不同s个数email_set=set()#定义一个set，其长度就是set中不同的个数
+        
+        
+        '''
+        for email in emails:
+            name,domain=email.split('@')#将email从+处分成两部分
+            name=name[:name.find('+')].replace('.','')#去除.
+            email_set.add(name+'@'+domain)
+        return len(email_set)
+    
