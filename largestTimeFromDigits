@@ -1,0 +1,18 @@
+class Solution(object):
+    def largestTimeFromDigits(self, A):
+        """
+        :type A: List[int]
+        :rtype: str
+        """
+        '''
+        1小时限制00--23
+        2分钟限制00-59
+        排序后，选前两个，如果满足连个条件，则返回时间
+        由于只有4个数字，所以可以先生成所有结果，再取符合现实、最大的值
+        '''
+        A.sort(reverse=True)#从大到小，枚举也是如此
+        p = itertools.permutations(A)
+        for hour1, hour2, min1, min2 in p:
+            if hour1 * 10 + hour2 <= 23 and min1 * 10 + min2 <= 59:
+                return str(hour1) + str(hour2) + ':' + str(min1) + str(min2)
+        return ''
