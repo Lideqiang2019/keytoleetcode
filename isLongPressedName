@@ -1,0 +1,27 @@
+class Solution(object):
+    def isLongPressedName(self, name, typed):
+        """
+        :type name: str
+        :type typed: str
+        :rtype: bool
+        """
+        '''
+        首先键入顺序不能变
+        如果相等，则下一个字符
+        否则
+        '''
+        i, j=0,0
+        if name[0]!=typed[0] or name[-1]!=typed[-1]:
+            return False
+        else:
+            while i<len(name) and j<len(typed):
+                if name[i]==typed[j]:#如果相等，键入字符正确，试试下一组
+                    i+=1
+                    j+=1
+                else:#如果不相等，看看是否是重复导致的，如果不是重复就是键入错误
+                    if name[i-1]==typed[j]:
+                        i-=1
+                    else:
+                        return False
+            return True
+                    
