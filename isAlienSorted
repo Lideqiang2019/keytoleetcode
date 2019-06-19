@@ -1,0 +1,8 @@
+class Solution:
+    def isAlienSorted(self, words: List[str], order: str) -> bool:
+        # 构建一个通过给定字母的顺序排序的匿名函数，给列表排序，在判断是否相等。
+        order1 = dict(zip(list(order), range(26)))
+        if words == sorted(words, key=lambda x: [order1[n] for n in x]):
+            return True
+        else:
+            return False
