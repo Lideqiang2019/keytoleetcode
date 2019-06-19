@@ -1,0 +1,22 @@
+class Solution(object):
+    def diStringMatch(self, S):
+        """
+        :type S: str
+        :rtype: List[int]
+        """
+        '''
+        读懂题目很简单
+        '''
+        left=0
+        right=len(S)
+        A=[]
+        for i in S:
+            if i=='I':
+                A.append(left)
+                left+=1
+            else:
+                A.append(right)
+                right-=1
+        A.append(right)
+        return A
+        
