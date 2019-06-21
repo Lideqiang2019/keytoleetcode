@@ -1,0 +1,15 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isUnivalTree(self, root: TreeNode) -> bool:
+        '''
+        直接遍历，看看根和叶子是否相等，如果不等则返回FALSE
+        继续判断
+        '''
+        vals=lambda n: vals(n.left)+[n.val]+vals(n.right) if n else []
+        return len(set(vals(root)))==1
