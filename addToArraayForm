@@ -1,0 +1,6 @@
+class Solution:
+    def addToArrayForm(self, A: List[int], K: int) -> List[int]:
+        '''
+        用廖里的例子来解决reduce函数
+        '''
+        return list(map(int,str(int(''.join(map(str,A)))+K)))
