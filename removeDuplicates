@@ -1,0 +1,11 @@
+class Solution:
+    def removeDuplicates(self, S: str) -> str:
+        s=''
+        i=0
+        for i in S:
+            s+=i
+            if len(s)<2:#不足两个继续加入
+                continue
+            if i==s[-2]:#两个时，如果相等则取最后两个不等的
+                s=s[:-2]
+        return s
