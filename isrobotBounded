@@ -1,0 +1,33 @@
+class Robot:
+    def __init__(self):
+        self.loc = [0, 0]
+        self.direction_list = [[0, 1], [-1, 0], [0, -1], [1, 0]]     # North, West, South, East
+        self.direction_id = 0                                        # North
+
+    @property
+    def cur_direction(self):
+        return self.direction_list[self.direction_id]
+
+    def forward(self):
+        self.loc = [sum(l) for l in zip(self.loc, self.cur_direction)]
+
+    def turnleft(self):
+        self.direction_id = (self.direction_id + 1) % 4
+
+    def turnright(self):
+        self.direction_id = (self.direction_id - 1) % 4
+        
+class Solution:
+    def isRobotBounded(self, instructions: str) -> bool:
+        '''
+        如果四次内没办法回到原点，那么就永远回不去了。
+        '''
+        robot=Robot()
+        for i in instructions*4:
+            if i=='G':
+                robot.forward()
+            elif i=='L':
+                robot.turnleft()
+            elif i=='R':
+                robot.turnright()
+        return robot.loc==[0,0]
