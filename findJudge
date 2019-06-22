@@ -1,0 +1,20 @@
+class Solution:
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        '''
+        其余数都是指向某一个数的时候，所指的就是小镇的法官
+        分别用两个数组存储，一个用来存储入度数，也就是相信你的人的个数，数组下标就是代表该人，1到N
+        另外一个用来存储出度数，也就是你相信的人的个数
+        入度数等于N-1，出度数为0，则这个人就是法官，否则无法确定法官。
+    
+        '''
+        a=[0 for x in range(N+1)]#相信你的人
+        b=[0 for x in range(N+1)]#你相信的人
+        
+        for num in trust:
+            a[num[1]]+=1
+            b[num[0]]+=1
+        for i ,num in enumerate(a):
+            if (i!=0 and num==N-1):#有N-1个相信我的
+                if (b[i]==0):#我一个都不相信别人
+                    return i
+        return -1
