@@ -1,0 +1,32 @@
+class Solution:
+    def canThreePartsEqualSum(self, A: List[int]) -> bool:
+        '''
+        和除以3
+        首选算A的累加和能否被3整除，不可以那分不了3等分。
+        双指针前后向中间逼近，不用考虑中间那段怎么分，只要左右两段累加和等于3等分的数值，中间剩的那段也就找到了。
+        '''
+        ans = sum(A)
+        if ans % 3 != 0:
+            return False
+        
+        avg = int(ans / 3)
+        
+        
+        i = 0
+        j = len(A) - 1
+        res = False
+        lans,rans = 0,0
+        while i < j:
+            if lans != avg:
+                lans += A[i]
+                i += 1
+            
+            if rans != avg:
+                rans += A[j]
+                j -= 1
+            
+            if lans == avg and rans == avg:
+                res = True
+                break
+        
+        return res
