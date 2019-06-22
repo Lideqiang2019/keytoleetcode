@@ -1,0 +1,13 @@
+class Solution:
+    def commonChars(self, A: List[str]) -> List[str]:
+        '''
+        用数组存每个字符串各字符出现的次数，把数组放在list中，最后比较list中数组代表各字符出现次数的最小值
+        '''
+        res=[]
+        if not A:
+            return  res
+        key=set(A[0])
+        for k in key:#A[0]中每个字符出现的次数
+            minnum=min(a.count(k) for a in A)
+            res+=minnum*k
+        return res
