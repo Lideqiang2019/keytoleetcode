@@ -1,0 +1,24 @@
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums) - 1
+        tmp = n
+        record = []
+        while n > 0:
+            if nums[n] > nums[n - 1]:
+                k = 0
+                record.append(nums[n])
+                min_val = record[k]
+                while min_val <= nums[n - 1]:
+                    k += 1
+                    min_val = record[k]
+                index = tmp - k
+                nums[n - 1], nums[index] = nums[index], nums[n - 1]
+                nums[n:] = nums[n:][::-1]
+                return
+            else:
+                record.append(nums[n])   
+            n -= 1
+        nums.reverse()
