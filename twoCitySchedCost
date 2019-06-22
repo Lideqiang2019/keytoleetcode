@@ -1,0 +1,8 @@
+class Solution:
+    def twoCitySchedCost(self, costs: List[List[int]]) -> int:
+        sum=0
+        nums=sorted(costs,key=lambda x:x[0]-x[1])#前面数大的排在后面
+        l=len(nums)
+        for i in range(l):
+            sum=sum+nums[i][i//(l//2)]#A取较小的数，剩下的B取
+        return sum
