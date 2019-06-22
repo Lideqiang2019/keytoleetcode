@@ -1,0 +1,13 @@
+class Solution:
+    def prefixesDivBy5(self, A: List[int]) -> List[bool]:
+        '''
+        每次添加一个新的数据
+        '''
+        res=[]
+        s=0
+        
+        for n in A:
+            s=s*2+n
+            res.append(s%5==0)
+        return res
+            
