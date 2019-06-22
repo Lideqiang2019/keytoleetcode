@@ -1,0 +1,14 @@
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        res = []
+        
+        def back(left, right, part):
+            if left == right and left == n:
+                res.append(part)
+            if left > n or left < right:
+                return 
+            back(left+1, right, part+'(')
+            back(left, right+1, part+')')
+            
+        back(0, 0, "")
+        return res
