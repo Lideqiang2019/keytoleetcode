@@ -1,0 +1,11 @@
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        '''
+        左窗口left，右窗口right，如果窗口内的字符串元素互不相同则右窗口右移一位，否则左右窗口同时右移一位。
+        '''
+        left,right=0,0
+        while right<len(s):
+            if len(s[left:right+1])!=len(set(s[left:right+1])):#有重复的，略过
+                  left+=1
+            right+=1
+        return right-left
