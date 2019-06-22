@@ -1,0 +1,7 @@
+class Solution:
+    def bitwiseComplement(self, N: int) -> int:
+        '''
+        先转2进制，0,1 互换，再变回十进制
+    
+        '''
+        return int(str(bin(N)).replace('0','2').replace('1','0').replace('2','1')[2:],2)
