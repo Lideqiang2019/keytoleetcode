@@ -1,0 +1,25 @@
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        '''
+        有点像图像渲染的题目
+        用了zip方法，将每个位置的四个方向连接在一起，随着位置的改变，即可
+        让整个表格填满
+        :使用一个栈，先把腐烂的橘子（的坐标）依次入栈，然后从栈顶开始，弹出一个腐烂的橘子，同时将其四周的好橘子腐蚀并入栈，          时间time+1，依次进行直到栈空，最后如果grid中好有好橘子则返回-1，否则返回time
+        '''
+        x,y,time=len(grid),len(grid[0]),0
+        locs,stack=[[-1,0],[0,-1],[0,1],[1,0]],[]
+        for i in range(x):
+            for j in range(y):
+                if grid[i][j]==2:
+                    stack.append((i,j,0))
+        while stack:
+            i,j,time=stack.pop(0)#初始化是第一个腐烂的橘子
+            for loc in locs:
+                loc_i,loc_j=i+loc[0],j+loc[1]
+                if 0<=loc_i<x and 0<=loc_j<y and grid[loc_i][loc_j]==1:#有橘子
+                    grid[loc_i][loc_j]=2
+                    stack.append((loc_i,loc_j,time+1))
+        for g in grid:#如果还有新鲜橘子
+            if 1 in g:
+                return -1
+        return time
