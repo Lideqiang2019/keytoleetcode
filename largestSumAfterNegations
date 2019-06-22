@@ -1,0 +1,20 @@
+import bisect
+class Solution:
+    def largestSumAfterKNegations(self, A: List[int], K: int) -> int:
+        '''
+        一些原则：
+        如果是负数，越小再加上符号后会变大
+        如果有0很容易调整
+        
+        先找出数组中负数的个数，与K进行比较
+        如果K-负数个数为不小于零的偶数，最大和相加，如果是奇数绝对值和减去绝对值最小的数
+        如果负数-K为大于零的个数，则取绝对值大的负数，让其变为正数
+        可以先排序
+        '''
+        A.sort()
+        a=0
+        while K>0:
+            A,a=A[1:],-A[0]#一次过后，最小的负数变为正数
+            bisect.insort(A,a)
+            K-=1
+        return sum(A)
