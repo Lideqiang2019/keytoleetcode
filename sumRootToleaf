@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def sumRootToLeaf(self, root: TreeNode) -> int:
+        self.cur=""
+        res=[]
+        self.record(root,res)
+        return sum(res) 
+    
+    def record(self,root,res):
+        if not root:#无
+            return
+        if root.left is None and root.right is None:#只有根节点
+            self.cur+=str(root.val)
+            res.append(int(self.cur,2))
+            self.cur=self.cur[:-1]
+            return 
+        self.cur+=str(root.val)#根节点
+        self.record(root.left,res)#左子叶
+        self.record(root.right,res)#右子叶
+        self.cur=self.cur[:-1]
