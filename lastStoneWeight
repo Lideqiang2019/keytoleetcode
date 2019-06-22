@@ -1,0 +1,16 @@
+class Solution:
+    def lastStoneWeight(self, stones: List[int]) -> int:
+        '''
+        先排序，倒序较好
+        每次取两个
+        如果相等，则直接再取两个
+        如果不等，将y-x给第2个，再取
+        '''
+        a=0
+        while len(stones)>=2:
+            stones.sort()
+            a=stones[-1]-stones[-2]
+            stones.pop()
+            stones.pop()
+            stones.append(a)
+        return stones[0]
