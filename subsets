@@ -1,0 +1,13 @@
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        '''
+        78直接从后遍历，遇到一个数就把所有子集加上该数组成新的子集，遍历完毕即是所有子集
+        '''
+        res = [[]]
+        for num in nums:
+            tmp = res[:]
+            for item in res:
+                tmp.append(item + [num])     
+            res = tmp[:]
+            
+        return res
