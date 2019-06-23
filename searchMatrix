@@ -1,0 +1,26 @@
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        '''
+        74这道题的关键点在于利用矩阵升序的特性，需要选择合适的切入点与目标值相比较以缩小数据返围，很明显如果选择左上         或右下角当做切入点并不能起到只能分别排除一个选项，而如果选择右上角或者左下角进行比较即可起到更明显的效果。
+        '''
+        if not matrix or not matrix[0]:
+            return False
+        m, n = len(matrix), len(matrix[0])
+        
+        i, j = m - 1, 0
+        while 1:
+            if 0 <= i < m and 0 <= j < n:
+                cur = matrix[i][j]
+                if cur == target:
+                    return True
+                elif cur < target:
+                    j += 1
+                elif cur > target:
+                    i -= 1
+            else:
+                return False
