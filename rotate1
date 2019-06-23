@@ -1,0 +1,15 @@
+class Solution:
+    def rotate(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        最直接的想法是先转置矩阵，然后翻转每一行。f
+        """
+        l=len(matrix[0])
+        
+        #转置，也可用transpose方法
+        for i in range(l):
+            for j in range(i,l):
+                matrix[i][j],matrix[j][i]=matrix[j][i],matrix[i][j]
+        
+        for i in range(l):
+            matrix[i].reverse()
