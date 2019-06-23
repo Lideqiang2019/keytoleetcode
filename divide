@@ -1,0 +1,27 @@
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        '''
+        位移算法代替除法
+         我们可以把一个dividend（被除数）先除以2^n，n最初为31，不断减小n去试探,当某个n满足dividend/2^n>=divisor             时，
+     *
+     * 表示我们找到了一个足够大的数，这个数*divisor是不大于dividend的，所以我们就可以减去2^n个divisor，以此类推
+        '''
+        fuhao=1
+        if dividend^divisor<0:
+            fuhao=0
+        count=0
+        beichu=abs(dividend)
+        chushu=abs(divisor)
+        for i in range(31,-1,-1):
+            if beichu>>i>=chushu:
+                wei=1<<i
+                count+=wei
+                beichu-=chushu<<i
+        if count>2**31-1 and fuhao:
+            return 2**31-1
+        if count>2**31 and not fuhao:
+            return -2**31
+        if fuhao:
+            return count
+        else:
+            return -count
