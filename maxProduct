@@ -1,0 +1,12 @@
+class Solution(object):
+    def maxProduct(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        #先计算从左到右的相乘的最大值，再计算从右到左的最大值；再将两组最大值相比
+        B = A[::-1]
+        for i in range(1, len(A)):
+            A[i] *= A[i - 1] or 1
+            B[i] *= B[i - 1] or 1
+        return max(max(A),max(B))
