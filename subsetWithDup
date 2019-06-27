@@ -1,0 +1,16 @@
+class Solution:
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        '''
+        90 nums遍历一个数num，新的结果 就是原来res的基础上再 res中每个都加[num]，可以动手自己演化一下，所以就把              nums当作不断增加数的list，遍历nums即可
+
+        '''
+        nums.sort()
+
+        res = [[]]
+        for i in range(len(nums)-1, -1, -1):
+            for subres in res[:]: 
+                res.append(subres+[nums[i]])
+                if res.count(res[-1]) > 1:
+                    res.pop()
+    
+        return res
