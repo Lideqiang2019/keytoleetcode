@@ -1,0 +1,9 @@
+class Solution(object):
+    def findPeakElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        #162找第一个元素变小的，返回索引即可,直接返回最大值索引应该也可以
+        return nums.index(max(nums))
+            
