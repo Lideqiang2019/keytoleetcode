@@ -1,0 +1,43 @@
+class Solution(object):
+    def fractionToDecimal(self, numerator, denominator):
+        """
+        :type numerator: int
+        :type denominator: int
+        :rtype: str
+        """
+        '''
+        1 分母不为0
+        2 对于能除尽的，直接除即可
+        3 对于不能除尽的，找到整数部分和循环部分
+        '''
+        sign='-'if numerator * denominator<0 else ''
+        numerator, denominator =abs(numerator),abs(denominator)
+        #关键部分，将整数提取出来
+        
+        m,n =divmod(numerator,denominator)#x//y ,x%y
+        int_part=str(m)
+        
+        if not n:
+            return sign+str(m)
+        decimal_part=[]
+        
+        dic={}
+        i=0
+        
+        #对于不能整除的情况，模拟除法
+        
+        while n and  n not in dic:
+            dic[n]=i
+            i+=1
+            m,n=divmod(n*10,denominator)
+            decimal_part.append(str(m))
+            
+        if not n:
+            res=sign + int_part +'.'+''.join(decimal_part)
+            
+        else:
+            decimal_part.insert(dic[n],'(')
+            decimal_part.append(')')
+            res = sign + int_part + '.' + ''.join(decimal_part)
+        return res
+        
