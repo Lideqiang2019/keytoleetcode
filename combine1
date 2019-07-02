@@ -1,0 +1,23 @@
+class Solution:
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        '''
+        递归问题，
+        '''
+        #如果不满足条件则返回空
+        if k >n or k==0:
+            return []
+        #k=1时，则取出每个数即可
+        if k==1:
+            return [[i] for i in range(1,n+1)]
+        #如果k==n,一次性将所有值取出放在一个list即可
+        if k==n:
+            return [[i] for i in range(1,n+1)]
+        #递归
+        answer=self.combine(n-1,k)
+        
+        for item in self.combine(n-1,k-1):
+            item.append(n)
+            answer.append(item)
+            
+        return answer
+            
