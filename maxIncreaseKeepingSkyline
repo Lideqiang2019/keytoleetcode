@@ -1,0 +1,28 @@
+class Solution:
+    def maxIncreaseKeepingSkyline(self, grid: List[List[int]]) -> int:
+        '''
+        807
+        先找每行的最大值，找每列最大值
+        先看列，对于不是最大值的的其余三行
+        比较其与每行的值的大小，将较小的用较大的替换
+        '''
+        #找每行每列最大值
+        row_max=[max(row) for row in grid]
+        col_max=[max(col) for col in zip(*grid)]
+        '''
+        nums = ['flower','flow','flight']
+        for i in zip(*nums):
+        print(i)
+        输出结果：
+
+        ('f', 'f', 'f')
+        ('l', 'l', 'l')
+        ('o', 'o', 'i')
+        ('w', 'w', 'g')
+        '''
+        res=0
+        #遍历两遍，从每一行中取值，将其换为最大值
+        for r,row in enumerate(grid):
+            for c, val in enumerate(row):
+                res+=min(row_max[r],col_max[c])-val
+        return res
