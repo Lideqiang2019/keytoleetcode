@@ -1,6 +1,7 @@
 class Solution:
     def countBits(self, num: int) -> List[int]:
         '''
+        338
         将十进制数变成二进制数
         而后变成字符串，数字符串中“1”的个数
         '''
