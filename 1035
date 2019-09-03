@@ -1,0 +1,28 @@
+class Solution:
+    def maxUncrossedLines(self, A: List[int], B: List[int]) -> int:
+        '''
+        1.遍历A，找B中与A[i]相同的数，如果有则加一
+        2.遍历下一个，但是要从上一个相同的后面找
+        
+        这个问题个难点:
+        要解决交叉的问题，要记录上一个满足题意的位置
+        
+        A用一个循环，B用一个循环，用if判断
+        while较好,如果B的最后一个数满足题意，循环结束
+        如果没找到i加1
+        找到了j要加1
+        '''
+        m=len(A)
+        n=len(B)
+        
+        dp=[[0]*(n+1) for _ in range(m+1)]#全0矩阵
+        
+        for i in range(1,m+1):
+            for j in range(1,n+1):
+                if A[i-1]==B[j-1]:
+                    d[i][j]=dp[i-1][j-1]+1
+                
+                else:
+                    dp[i][j]=max(dp[i-1][j],dp[i][j-1])
+                
+        return dp[-1][-1]
